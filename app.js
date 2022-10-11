@@ -5,7 +5,7 @@ import { getPosts } from '/fetch-utils.js';
 import { renderPosts } from '/render-utils.js';
 
 /* Get DOM Elements */
-const postList = document.getElementById('bulletin-board');
+const bulletinBoard = document.getElementById('bulletin-board');
 const errorDisplay = document.getElementById('error-display');
 
 /* State */
@@ -36,12 +36,12 @@ function displayError() {
     }
 }
 
-async function displayPosts() {
-    postList.innerHTML = '';
+function displayPosts() {
+    bulletinBoard.innerHTML = '';
 
     for (const post of posts) {
         const postEl = renderPosts(post);
-        postList.append(postEl);
+        bulletinBoard.append(postEl);
     }
 }
 
