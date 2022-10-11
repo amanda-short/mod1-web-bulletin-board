@@ -1,10 +1,12 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
-import { getPosts } from  '/fetch-utils';
+import { getPosts } from '/fetch-utils.js';
+import { renderPosts } from '/render-utils.js';
 
 /* Get DOM Elements */
-const postList = document.getElementById('post-list');
+const postList = document.getElementById('bulletin-board');
+const errorDisplay = document.getElementById('error-display');
 
 /* State */
 let error = null;
@@ -26,3 +28,21 @@ window.addEventListener('load', async () => {
 });
 
 /* Display Functions */
+function displayError() {
+    if (error) {
+        errorDisplay.textContent = error.message;
+    } else {
+        errorDisplay.textContent = '';
+    }
+}
+
+async function displayPosts() {
+    postList.innerHTML = '';
+
+    for (const post of posts) {
+        const postEl = renderPosts(post);
+        postList.append(postEl);
+    }
+}
+
+

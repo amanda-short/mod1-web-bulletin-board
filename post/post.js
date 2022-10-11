@@ -1,7 +1,7 @@
 import '../auth/user.js';
 import { createPost } from '../fetch-utils.js';
 
-const postForm = document.getElementById(post-form);
+const postForm = document.getElementById('post-form');
 const errorDisplay = document.getElementById('error-display');
 
 let error = null;

@@ -28,8 +28,13 @@ export async function signOutUser() {
 
 /* Data functions */
 export async function createPost(post) {
-    return await client.from('post').insert(post);
+    return await client.from('posts').insert(post);
 }
 
 export async function getPosts() {
-    return await client.from('post').select('*');
+    return await client.from('posts').select('*');
+} 
+
+export async function getPost(id) {
+    return await client.from('posts').select('*').eq('id', id).single();
+}
